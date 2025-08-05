@@ -36,7 +36,10 @@ app.use(errorHandle);
 const { TaskConnect } = require("./connections/TaskConection");
 const start = async (url) => {
   await TaskConnect(url);
-  app.listen(port,'0.0.0.0', () => {
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+  app.listen(port, "0.0.0.0", () => {
     console.log(`Running On ${port}`);
   });
 };
